@@ -1,8 +1,10 @@
 class Heartbeat {
 
-    constructor() {
+    constructor(onFlashRate=1000, offFlashRate=500) {
         this._element = document.createElement('div');
         this._intervalId = null;
+        this.onFlashRate = onFlashRate;
+        this.offFlashRate = offFlashRate;
     }
         
     on() {
@@ -10,7 +12,7 @@ class Heartbeat {
         this._element.classList.remove('off');
         this._intervalId = setInterval(() => {
             this._element.classList.toggle('on');
-        }, 1000);
+        }, this.onFlashRate);
     }
 
     off() {
@@ -18,7 +20,7 @@ class Heartbeat {
         this._element.classList.remove('on');
         this._intervalId = setInterval(() => {
             this._element.classList.toggle('off');
-        }, 500);
+        }, this.offFlashRate);
     }
 
     get element() {
