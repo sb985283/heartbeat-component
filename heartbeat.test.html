@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heartbeat {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: calc(50vh - 50px);
+            left: calc(50vw - 50px);
+            border-radius: 50px;
+            background-color: lightgrey;
+        }
+        .heartbeat.on {
+            background-color: green;
+        }
+        .heartbeat.off {
+            background-color: red;
+        }
+    </style>
+    <script src="heartbeat.js"></script>
+    <script>
+
+        onload = function() {
+            var heartbeat = new Heartbeat();
+            var heartbeatElement = heartbeat.element;
+            heartbeatElement.classList.add('heartbeat');
+            document.body.appendChild(heartbeatElement);
+            document.querySelector('#onButton').onclick = () => heartbeat.on();
+            document.querySelector('#offButton').onclick = () => heartbeat.off();
+        }
+
+    </script>
+</head>
+<body>
+    <button id="onButton">On</button>
+    <button id="offButton">Off</button>
+</body>
+</html>
